@@ -10,6 +10,7 @@ mysql: &mysql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
+  host: localhost
 
 development:
   <<: *mysql
@@ -25,3 +26,5 @@ test:
 production:
   <<: *mysql
   database: BullentinBoard_API_production
+  username: <%= ENV['BULLENTINBOARD_API_DB_USER'] %>
+  password: <%= ENV['BULLENTINBOARD_API_DB_PASSWORD'] %>
