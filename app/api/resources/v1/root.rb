@@ -5,6 +5,7 @@ module Resources
         format :json
         content_type :json, 'application/json'
         mount Resources::V1::Topics
+        mount Resources::V1::Comments
       end
     end
   end
