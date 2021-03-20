@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
+# api
+gem 'grape'
 # Devise関連
 gem "devise", git: "https://github.com/heartcombo/devise"
 gem 'devise_token_auth'
