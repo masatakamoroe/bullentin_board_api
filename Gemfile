@@ -5,6 +5,7 @@ ruby '2.7.2'
 # api
 gem 'grape'
 gem 'grape-entity'
+gem 'grape_devise_token_auth'
 # Devise関連
 gem "devise", git: "https://github.com/heartcombo/devise"
 gem 'devise_token_auth'
