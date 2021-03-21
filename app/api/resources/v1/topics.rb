@@ -5,7 +5,7 @@ module Resources
                 # http://localhost:3000/api/v1/topics
                 desc "topic list"
                 get do 
-                    present Topic.all
+                    present Topic.all, with: Entities::V1::TopicEntity
                 end
             end
         end
