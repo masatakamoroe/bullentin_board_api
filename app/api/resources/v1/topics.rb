@@ -10,6 +10,20 @@ module Resources
                     authenticate_user! 
                     present current_user.topics, with: Entities::V1::TopicEntity
                 end
+                desc "create new topic"
+                params do
+                    requires :title, type: String
+                    requires :text, type: String
+                end
+                    
+                post do
+                    authenticate_user!
+                    current_user.topics.create({
+                        title: params[:title],
+                        text: params[:text],
+                        })
+                    
+                end
             end
         end
     end
