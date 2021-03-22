@@ -8,7 +8,7 @@ module Resources
                 desc "comment list"
                 get do
                     authenticate_user!
-                    present Comment.all, with: Entities::V1::CommentEntity
+                    present current_user.comments, with: Entities::V1::CommentEntity
                 end
             end
         end
