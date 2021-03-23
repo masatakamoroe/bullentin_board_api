@@ -6,7 +6,7 @@ module Resources
             resource :comments do
                 # http://localhost:3000/api/v1/comments
                 desc "comment list"
-                get '/' do
+                get do
                     authenticate_user!
                     present current_user.comments, with: Entities::V1::CommentEntity
                 end
@@ -16,7 +16,7 @@ module Resources
                     requires :text, type: String
                     requires :topic_id, type: Integer
                 end
-                post '/' do
+                post do
                     authenticate_user!
                     current_user.comments.create({
                         text: params[:text],
