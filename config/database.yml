@@ -24,7 +24,8 @@ test:
   database: BullentinBoard_API_test
 
 production:
-  <<: *mysql
+  <<: *postgres
+  url: <%= ENV['DATABASE_URL'] %>
   database: BullentinBoard_API_production
   username: <%= ENV['BULLENTINBOARD_API_DB_USER'] %>
   password: <%= ENV['BULLENTINBOARD_API_DB_PASSWORD'] %>
