@@ -10,6 +10,19 @@ module Resources
                     authenticate_user!
                     present current_user.comments, with: Entities::V1::CommentEntity
                 end
+
+                desc "create new comment"
+                params do
+                    requires :text, type: String
+                    requires :topic_id, type: Integer
+                end
+                post do
+                    authenticate_user!
+                    current_user.comments.create({
+                        text: params[:text],
+                        topic_id: params[:topic_id]
+                    })
+                end
             end
         end
     end
