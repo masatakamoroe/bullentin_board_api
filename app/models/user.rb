@@ -1,7 +1,7 @@
 class User < ApplicationRecord
             # Include default devise modules.
-            has_many :topics
-            has_many :comments
+            has_many :topics, dependent: :destroy
+            has_many :comments, dependent: :destroy
             # Include default devise modules. Others available are:
             devise :database_authenticatable, :registerable,
                    :recoverable, :rememberable, :validatable,
