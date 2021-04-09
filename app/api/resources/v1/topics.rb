@@ -5,11 +5,24 @@ module Resources
             helpers GrapeDeviseTokenAuth::AuthHelpers
             resource :topics do
                 # http://localhost:3000/api/v1/topics
-                desc "topic list"
+                desc 'topic list'
                 get do
-                    authenticate_user! 
-                    present current_user.topics, with: Entities::V1::TopicEntity
+                    authenticate_user!
+                    topics = Topic.includes(:user)
+                    present topics, with: Entities::V1::TopicEntity
                 end
+
+                desc 'returns a topic'
+                params do
+                    requires :id, type: Integer
+                end
+
+                get '/:id' do
+                    authenticate_user!
+                    topic = Topic.includes(:user)
+                    present topic.find(params[:id]), with: Entities::V1::TopicEntity
+                end
+
                 desc "create new topic"
                 params do
                     requires :title, type: String

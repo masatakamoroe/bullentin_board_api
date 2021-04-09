@@ -8,7 +8,18 @@ module Resources
                 desc "comment list"
                 get do
                     authenticate_user!
-                    present current_user.comments, with: Entities::V1::CommentEntity
+                    present Comment.all, with: Entities::V1::CommentEntity
+                end
+
+                desc 'returns a comment'
+                params do
+                    requires :id, type: Integer
+                end
+
+                get '/:id' do
+                    authenticate_user!
+                    comments = Comment.includes(:user)
+                    present comments.find(params[:id]), with: Entities::V1::CommentEntity
                 end
 
                 desc "create new comment"
