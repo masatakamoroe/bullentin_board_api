@@ -23,7 +23,7 @@ module Resources
                     present topic.find(params[:id]), with: Entities::V1::TopicEntity
                 end
 
-                desc "create new topic"
+                desc 'create new topic'
                 params do
                     requires :title, type: String
                     requires :text, type: String
@@ -34,8 +34,7 @@ module Resources
                     current_user.topics.create({
                         title: params[:title],
                         text: params[:text],
-                        })
-                    
+                    })
                 end
             end
         end

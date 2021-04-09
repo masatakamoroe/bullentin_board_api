@@ -5,7 +5,7 @@ module Resources
             helpers GrapeDeviseTokenAuth::AuthHelpers
             resource :comments do
                 # http://localhost:3000/api/v1/comments
-                desc "comment list"
+                desc 'comment list'
                 get do
                     authenticate_user!
                     present Comment.all, with: Entities::V1::CommentEntity
@@ -22,7 +22,7 @@ module Resources
                     present comments.find(params[:id]), with: Entities::V1::CommentEntity
                 end
 
-                desc "create new comment"
+                desc 'create new comment'
                 params do
                     requires :text, type: String
                     requires :topic_id, type: Integer
